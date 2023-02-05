@@ -44,7 +44,7 @@ def direct(prompt: str, api_key_path: str = None, api_key: str = None):
 def interactive():
     while True:
         try:
-            openai.api_key_path = './res/openai-api-key.txt'
+            openai.api_key_path = os.path.join(os.path.dirname(__file__), 'res/openai-api-key.txt')
             if not os.path.isfile(openai.api_key_path):
                 openai.api_key_path = input("[>] OpenAI API key path: ")
 
@@ -74,7 +74,7 @@ if __name__ == '__main__':
     
     api_key_args_group = direct_arg_group.add_mutually_exclusive_group()
     api_key_args_group.add_argument('-ak', '--api-key', help='The OpenAI API key', default=None)
-    api_key_args_group.add_argument('-akp', '--api-key-path', help='The OpenAI API key', default='./res/openai-api-key.txt')
+    api_key_args_group.add_argument('-akp', '--api-key-path', help='The OpenAI API key', default=os.path.join(os.path.dirname(__file__), 'res/openai-api-key.txt'))
 
     args = parser.parse_args()
 

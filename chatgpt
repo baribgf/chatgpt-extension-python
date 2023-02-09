@@ -4,6 +4,7 @@ import os
 import openai
 from argparse import ArgumentParser
 from halo import Halo
+from pyshs import styled
 
 progress = Halo(text='Getting response . .')
 
@@ -24,8 +25,10 @@ def get_response(prompt):
         progress.stop()
 
         return completion.choices[0].text.strip() + '\n'
-    except:
-        exit("\nError: There was a problem authenticating, verify your 'api key'")
+
+    except Exception as e:
+        print(e)
+        exit("\n" + styled("Error: There was a problem authenticating, verify your 'api key'", fg='red'))
 
 def direct(prompt: str, api_key_path: str = None, api_key: str = None):
     if api_key is not None:
@@ -39,16 +42,16 @@ def direct(prompt: str, api_key_path: str = None, api_key: str = None):
         raise ValueError('Neither "api key" or "api key path" has been specified.')
 
     response = get_response(prompt)
-    print(response)
+    print(styled(response, fg='white'))
 
 def interactive():
     while True:
         try:
             openai.api_key_path = os.path.join(os.path.dirname(__file__), 'res/openai-api-key.txt')
             if not os.path.isfile(openai.api_key_path):
-                openai.api_key_path = input("[>] OpenAI API key path: ")
+                openai.api_key_path = input(styled("[>] OpenAI API key path:", bg='blue') + ' ')
 
-            prompt = input("[>] Write your prompt: ")
+            prompt = input(styled("[>] Write your prompt:", bg='blue') + ' ')
 
             if prompt == '\c':
                 os.system('clear')
@@ -58,8 +61,9 @@ def interactive():
             
             response = get_response(prompt)
 
-            print("[>] Response: \n")
-            print(response)
+            print(styled("[>] Response:", bg='green') + '\n')
+            
+            print(styled(response, fg='white', style='bold'))
         except KeyboardInterrupt:
             print()
             break
@@ -83,4 +87,4 @@ if __name__ == '__main__':
     else:
         interactive()
 
-    print('Good bye!')
+    print(styled('Good bye!', bg='cyan'))

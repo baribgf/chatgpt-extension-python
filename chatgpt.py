@@ -93,7 +93,7 @@ def interactive():
 
             print(styled("[>] Response:", bg='green') + '\n')
             
-            print(styled(response, fg='white')
+            print(styled(response, fg='white'))
         except KeyboardInterrupt:
             print()
             break

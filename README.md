@@ -2,7 +2,7 @@
 
 This is an extension for the ChatGPT platform using the OpenAI API.
 
-Since i work a lot with vscode which is lonely consume memory, i see that is more consumable to open a browser and launch a session.
+Since i work a lot with vscode which is lonely consume memory, i see that is more consumable to open a browser and launch a session or to use a vscode extension.
 
 So i made this to stage in help !
 

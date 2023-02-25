@@ -9,12 +9,12 @@ from pyshs import styled
 progress = Halo(text='Getting response . .')
 
 def inter_help():
-    print(f"""{styled("Bari's ChatGPT Extension", bg='green')}\n""" + \
-        styled("[\\h]", bg='cyan') + ": View this help\t" + \
-        styled("[\\c]", bg='cyan') + ": Clear shell\n" + \
-        styled("[\\q]", bg='cyan') + ": Quit shell\t" + \
-        styled("[\\uak]", bg='cyan') + ": Update api key\n" + \
-        styled("[...]", bg='cyan') + ": Prompt to ChatGPT\t" + \
+    print(f"""{styled("Bari's ChatGPT Extension", fg='green', style='italic')}\n""" + \
+        styled("[\\h]:", fg='cyan') + " View this help\t" + \
+        styled("[\\c]:", fg='cyan') + " Clear shell\n" + \
+        styled("[\\q]:", fg='cyan') + " Quit shell\t" + \
+        styled("[\\uak]:", fg='cyan') + " Update api key\n" + \
+        styled("[...]:", fg='cyan') + " Prompt to ChatGPT\t" + \
         "\n")
 
 def get_response(prompt):
